@@ -1,4 +1,4 @@
-from models.convlstm_torch import ConvLSTM
+from .convlstm_torch import ConvLSTM
 import torch
 import numpy as np
 from torch.utils.data import DataLoader
