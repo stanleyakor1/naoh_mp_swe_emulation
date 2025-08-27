@@ -12,7 +12,7 @@ from src.data_preprocessing.split_data import split_by_time
 from src.utils.utils import (write_to_netcdf, data_split, unscale_pred)
 from src.training.trainer import (train_model,evaluate_model)
 from src.models.swe_net import SWE_NET
-assert 1 == 0
+
 
 # ------------------ Setup Logger ------------------
 log_dir = "logs"
