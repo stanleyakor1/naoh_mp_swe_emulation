@@ -130,14 +130,3 @@ class ModisDataProcessor:
         return ds
         # ds.to_netcdf(self.output_file)
         
-
-
-# processor = SnowDataProcessor(
-#     snow_pattern="snowcover/*",
-#     cloud_pattern="cloud/*",
-#     output_file="snow_data.nc",
-#     ideal_shape=(390, 348),
-#     cloud_threshold=35
-# )
-
-# ds = processor.convert_tif_netcdf()
