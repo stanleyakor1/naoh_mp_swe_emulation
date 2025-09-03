@@ -10,6 +10,9 @@ from netCDF4 import Dataset
 from datetime import datetime, timedelta
 import netCDF4 as nc
 import pandas as pd
+import xarray as xr
+from ..training.trainer import evaluate_model
+
 
 def load_scalers(filename):
       
@@ -23,7 +26,7 @@ def load_scalers(filename):
 
 def unscale_pred(model,test_data,conf_path):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    predictions =  evaluate_with_loader(model, test_data,device)
+    predictions =  evaluate_model(model, test_data,device)
     
     with open(conf_path, 'r') as file:
             conf = yaml.safe_load(file)
