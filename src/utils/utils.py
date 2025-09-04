@@ -24,20 +24,19 @@ def load_scalers(filename):
         print(f"File '{filename}' not found.")
         return None
 
+
 def unscale_pred(model,test_data,conf_path):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     predictions =  evaluate_model(model, test_data,device)
     
-    with open(conf_path, 'r') as file:
-            conf = yaml.safe_load(file)
         
-    y_scaler = load_scalers(conf['yscaler'])
+    y_scaler = joblib.load(conf_path)['SNOW']
     
   
     predictions_reshaped = predictions.reshape(-1, 390 * 348)
     
     # Inverse transform the scaled predictions
-    predictions_original = y_scaler[0].inverse_transform(predictions_reshaped)
+    predictions_original = y_scaler.inverse_transform(predictions_reshaped)
     
     # Reshape back to the original dimensions
     predictions_original = predictions_original.reshape(*predictions.shape)
