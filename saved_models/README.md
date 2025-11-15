@@ -8,7 +8,7 @@ The following models have been added to the repository:
 
 - `WRF_MODIS_STATIC_v1.pth`
 - `WRF_MODIS_STATIC_v2.pth`
-- `WRF_MODIS_v1.pth`
+- `WRF_STATIC_v1.pth`
 - `WRF_v1.pth`
 
 ## Model Naming Convention
@@ -27,8 +27,8 @@ The name of each model file is designed to clearly describe the set of input fea
 - **`WRF_MODIS_STATIC`**  
   Trained on a comprehensive set of features, including WRF atmospheric forcings, MODIS snow cover and LAI, and static variables like elevation and temporal encoding. The `v1` and `v2` versions represent distinct training runs.
 
-- **`WRF_MODIS`**  
-  Trained using WRF atmospheric forcings and MODIS snow cover.
+- **`WRF_STATIC`**  
+  Trained using WRF atmospheric forcings and static inputs (elevation, the sine and cosine transforms of day of the year).
 
 - **`WRF`**  
   Trained exclusively on WRF atmospheric forcings.
