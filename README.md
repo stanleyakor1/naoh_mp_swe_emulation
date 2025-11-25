@@ -17,7 +17,8 @@ Simulating SWE in mountainous regions is computationally intensive when using fu
 - Explore spatiotemporal dependencies via ConvLSTM architectures  
 - Provide a tool for operational or research forecasting of snow accumulation and melt in mountain basins  
 
-## Repository Structure  
+## Repository Structure
+  
 ├── notebooks/ # Jupyter notebooks for exploratory analysis
 ├── saved_models/ # Pre-trained model weights and run logs
 ├── snotel/ DOWNLOAD_SNOTEL # SNOTEL data download and preprocessing scripts
