@@ -5,7 +5,7 @@ ConvLSTM emulator of Noah-MP SWE with preprocessing, training, and evaluation to
 This repository implements a deep learning (ConvLSTM) framework to emulate the snow water equivalent (SWE) output of the Noah‑MP land surface model in mountainous terrain. The primary target region is the Colorado Rockies, but the code is structured generically to support similar high-latitude or mountainous domains.  
 Key features:  
 - Preprocessing of model forcing, terrain and remote-sensing predictors  
-- ConvLSTM2D (and optional Conv3D) model architecture for spatiotemporal SWE emulation  
+- ConvLSTM2D  model architecture for spatiotemporal SWE emulation  
 - Model training pipeline, inference, and performance evaluation  
 - Support for remote-sensing inputs (e.g., snow cover area, leaf area index) and model output comparands  
 - Saved model management and reproducibility tools  
