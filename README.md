@@ -18,20 +18,22 @@ Simulating SWE in mountainous regions is computationally intensive when using fu
 - Provide a tool for operational or research forecasting of snow accumulation and melt in mountain basins  
 
 ## Repository Structure
-  
-├── notebooks/ # Jupyter notebooks for exploratory analysis
-├── saved_models/ # Pre-trained model weights and run logs
-├── snotel/ DOWNLOAD_SNOTEL # SNOTEL data download and preprocessing scripts
-├── src/ # Core Python modules
-│ ├── data_preprocessing.py
-│ ├── model_architecture.py
-│ ├── training.py
-│ ├── evaluation.py
-│ └── utilities.py
-├── run_train.py # Entry point for training a new model
-├── requirements.txt # Python dependencies
-├── setup.py # Package installation script
-└── LICENSE # Project license
+```
+├── notebooks/                 # Jupyter notebooks for exploratory analysis
+├── saved_models/              # Pre-trained model weights and run logs
+├── snotel/                    # SNOTEL data download and preprocessing scripts
+│   └── DOWNLOAD_SNOTEL
+├── src/                       # Core Python modules
+│   ├── data_preprocessing.py
+│   ├── model_architecture.py
+│   ├── training.py
+│   ├── evaluation.py
+│   └── utilities.py
+├── run_train.py               # Entry point for training the SWE emulator
+├── requirements.txt           # Python dependencies
+├── setup.py                   # Optional package installer
+└── LICENSE                    # Project license
+```  
 
 ## Installation  
 1. Clone this repository:  
