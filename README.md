@@ -24,11 +24,11 @@ Simulating SWE in mountainous regions is computationally intensive when using fu
 ├── snotel/                    # SNOTEL data download and preprocessing scripts
 │   └── DOWNLOAD_SNOTEL
 ├── src/                       # Core Python modules
-│   ├── data_preprocessing.py
-│   ├── model_architecture.py
-│   ├── training.py
+│   ├── data_preprocessing
+│   ├── models
+│   ├── training
 │   ├── evaluation.py
-│   └── utilities.py
+│   └── utils
 ├── run_train.py               # Entry point for training the SWE emulator
 ├── requirements.txt           # Python dependencies
 ├── setup.py                   # Optional package installer
