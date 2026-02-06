@@ -1,0 +1,111 @@
+logging:
+  level: "INFO"
+
+time:
+  wy_start: "2002-10-01"
+  wy_end: "2017-09-30"
+
+data:
+  inputs:
+    wrf_forcings_nc: "/bsuscratch/stanleyakor/nscid/data/wrf_forcings.nc"
+    modis_snow_cover_nc: "/bsuscratch/stanleyakor/nscid/data/modis_snow_cover.nc"
+    lai_nc: "/bsuscratch/stanleyakor/nscid/data/lai.nc"
+
+    wrf_channel_order:
+      - "SNOWNC_CUMSUM"
+      - "PRCP_CUMSUM"
+      - "TMIN"
+      - "TMAX"
+      - "ELEVATION"
+
+  rename_vars:
+    snow_mask: "BINARY_SNOW_CLASS"
+
+  targets:
+    swe_nc: "/bsuscratch/stanleyakor/nscid/data/swe.nc"
+    variable: "SNOW"
+
+  static:
+    wrf_static_file: "/bsuscratch/stanleyakor/uppercolorado/static_inputs/wrfout_d02_2000-04-08_00:00:00"
+    time_index: 0
+    lat_var: "XLAT"
+    lon_var: "XLONG"
+
+splits:
+  train: ["2002-10-01", "2014-09-30"]
+  val:   ["2014-10-01", "2015-09-30"]
+  test:  ["2015-10-01", "2017-09-30"] #2017-09-30
+
+normalization:
+  features:
+    variables:
+      - "SNOWNC_CUMSUM"
+      - "PRCP_CUMSUM"
+      - "TMIN"
+      - "TMAX"
+      - "ELEVATION"
+      - "BINARY_SNOW_CLASS"
+      - "LAI"
+      
+         
+    method: "minmax"
+    scaler_path: "/bsuscratch/stanleyakor/scalers/scalers.pkl"
+    eval_split_key: "test"
+
+  target:
+    method: "minmax"
+    scaler_path: "/bsuscratch/stanleyakor/scalers/target_scalers.pkl"
+    eval_split_key: "test"
+
+dataloader:
+  sequence_length: 5
+
+  channel_order:
+    - "SNOWNC_CUMSUM"
+    - "PRCP_CUMSUM"
+    - "TMIN"
+    - "TMAX"
+    - "ELEVATION"
+    - "BINARY_SNOW_CLASS"
+    - "LAI"
+
+  train:
+    batch_size: 2
+    shuffle: true
+    drop_last: true
+    num_workers: 0
+    pin_memory: false
+
+  eval:
+    batch_size: 1
+    shuffle: false
+    drop_last: false
+    num_workers: 0
+    pin_memory: false
+
+model:
+  hidden_dim: 64
+  kernel_size: [3, 3]
+  height: 390
+  width: 348
+  dropout_rate: 0.3
+
+training:
+  num_epochs: 150
+  lr: 1e-4
+  checkpoint_path: "saved_models/exp_150epch_5seq_2batch.pth"
+
+outputs:
+  save_name_prefix: "data/swe_150epch_5seq_2batch"
+
+  pred_time:
+    base_month: "2015-10"
+    day_offset_from_seq: 1
+    end: "2017-09-30"
+
+  eval_period:
+    true_start_year: "2015"
+    true_end_year: "2017"
+
+  spatial_dims: ["south_north", "west_east"]
+  correlation_time: "2017-10-01"

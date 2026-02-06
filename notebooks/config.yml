@@ -1,0 +1,7 @@
+variables: ['PRCP','SNOWNC','TMIN','TMAX']
+dynamic_path1 : '/bsuscratch/stanleyakor/uppercolorado/WY'
+static_path : '/bsuscratch/stanleyakor/uppercolorado/static_inputs/wrfout_d02_2000-04-08_00:00:00'
+path_2_lai :  '/bsuscratch/stanleyakor/nscid/data/lai.nc'
+path_2_snwp : '/bsuscratch/stanleyakor/swe_emulator/data/snow_cover.nc'
+feat_mat_write_path : '/bsuscratch/stanleyakor/swe_emulator/data/feature_matrix_wy_16'
+feat_vec_write_path : '/bsuscratch/stanleyakor/swe_emulator/data/target_vec_wy_16'
