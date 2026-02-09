@@ -17,6 +17,8 @@ data:
       - "TMIN"
       - "TMAX"
       - "ELEVATION"
+      - 'DAY_SIN'
+      - 'DAY_COS'
 
   rename_vars:
     snow_mask: "BINARY_SNOW_CLASS"
@@ -32,8 +34,8 @@ data:
     lon_var: "XLONG"
 
 splits:
-  train: ["2002-10-01", "2013-09-30"]
-  val:   ["2013-10-01", "2015-09-30"]
+  train: ["2002-10-01", "2014-09-30"]
+  val:   ["2014-10-01", "2015-09-30"]
   test:  ["2015-10-01", "2017-09-30"] #2017-09-30
 
 normalization:
@@ -46,6 +48,8 @@ normalization:
       - "ELEVATION"
       - "BINARY_SNOW_CLASS"
       - "LAI"
+      - 'DAY_SIN'
+      - 'DAY_COS'
       
          
     method: "minmax"
@@ -58,7 +62,7 @@ normalization:
     eval_split_key: "test"
 
 dataloader:
-  sequence_length: 5
+  sequence_length: 7
 
   channel_order:
     - "SNOWNC_CUMSUM"
@@ -68,9 +72,11 @@ dataloader:
     - "ELEVATION"
     - "BINARY_SNOW_CLASS"
     - "LAI"
+    - 'DAY_SIN'
+    - 'DAY_COS'
 
   train:
-    batch_size: 2
+    batch_size: 4
     shuffle: true
     drop_last: true
     num_workers: 0
@@ -91,12 +97,12 @@ model:
   dropout_rate: 0.3
 
 training:
-  num_epochs: 150
+  num_epochs: 180
   lr: 1e-4
-  checkpoint_path: "saved_models/exp_150epch_5seq_2batch.pth"
+  checkpoint_path: "saved_models/exp_180epch_7seq_4batch.pth"
 
 outputs:
-  save_name_prefix: "data/swe_150epch_5seq_2batch"
+  save_name_prefix: "data/swe_180epch_7seq_4batch"
 
   pred_time:
     base_month: "2015-10"
